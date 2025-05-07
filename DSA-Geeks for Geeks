@@ -12,3 +12,23 @@ def LeftView(self,root):
   result=[]
   dfs(root,0,result)
   return result
+
+ROOT TO LEAF PATH (7 may 2025)
+
+class Solution:
+    def Paths(self, root):
+        # code here
+        def dfs(node,path,result):
+            if not node:
+                return 
+            path.append(node.data)
+            
+            if not node.left and not node.right:
+                result.append(list(path))
+                
+            dfs(node.left,path,result)
+            dfs(node.right,path,result)
+            path.pop()
+        result=[]
+        dfs(root,[],result)
+        return result
